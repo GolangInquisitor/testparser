@@ -18,7 +18,6 @@ type (
 		Email  string
 		Phone  string
 		Job    string
-		Name   string
 	}
 	BranchOffice struct {
 		Name    string
