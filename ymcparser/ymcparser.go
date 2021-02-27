@@ -2,6 +2,8 @@
 package ymcparser
 
 import (
+	"fmt"
+
 	"github.com/gocolly/colly"
 )
 
@@ -41,7 +43,6 @@ func Strart() {
 
 	c.OnRequest(func(r *colly.Request) {
 		fmt.Println("Visiting", r.URL)
-		colly.Request.Ctx
 
 	})
 
