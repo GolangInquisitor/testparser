@@ -26,7 +26,7 @@ type (
 	BranchOffList []BranchOffice
 )
 
-func Strart() {
+func Start() {
 	c := colly.NewCollector()
 
 	// Find and visit all links
