@@ -8,7 +8,8 @@ import (
 )
 
 const (
-	ParseURL = "https://ymcanyc.org/locations?type&amenities"
+	ParseURL     = "https://ymcanyc.org/locations?type&amenities"
+	CovLen   int = 1000
 )
 
 type (
@@ -31,17 +32,18 @@ func Start() {
 
 	// Find and visit all links
 	c.OnHTML(".location-list-row", func(e *colly.HTMLElement) {
-		//e.Request.Visit(e.Attr("href"))
+		e.Request.Visit(e.Attr("href"))
 		e.ForEach(".location-list-item", func(i int, e1 *colly.HTMLElement) {
-			fmt.Println("I=", i, "ANSW", *e1)
-
+			//	fmt.Println("I=", i, "ANSW", *e1)
+			e.Request.Ctx.Put(i, *e1)
 		})
+
 		fmt.Println("END")
 
 	})
 
 	c.OnRequest(func(r *colly.Request) {
-		fmt.Println("Visiting", r.URL)
+		fmt.Println("Visiting", r.Ctx)
 
 	})
 
